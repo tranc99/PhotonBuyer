@@ -1,0 +1,32 @@
+test: &default
+
+  # Credentials for REST APIs
+  client_id: AfHIAyfwVtrKMmimPHkU0ZzqXPocbb8LUxMJlNDwLc7_ap2UrC4c3xHpVwvi-VwQU2glqhro_fV7Fe5H
+  client_secret: EL5Moyg2qEHcmF_JD0D_sxDenRP3v-F_CAsGgr1Xrkg5remN3hboZP_J4qCzqgiFLnHHz3jucDlHnoAx
+
+  # Mode can be 'live' or 'sandbox'
+  mode: sandbox
+
+  # Credentials for Classic APIs
+  app_id: APP-80W284485P519543T
+  username: tmutunhire-facilitator_api1.gmail.com
+  password: E5CK8ZCNMDNQ8U2U
+  signature: AFcWxV21C7fd0v3bYYYRCpSSRl31A-SIAXx37LtNW6zyGZknStYGoQpL
+  # # With Certificate
+  # cert_path: "config/cert_key.pem"
+  sandbox_email_address: tmutunhire-facilitator@gmail.com
+
+  # # IP Address
+  # ip_address: 127.0.0.1
+  # # HTTP Proxy
+  # http_proxy: http://proxy-ipaddress:3129/
+
+  # verbose_logging: true
+
+development:
+  <<: *default
+
+production:
+  <<: *default
+  #mode: live
+  mode: sandbox
