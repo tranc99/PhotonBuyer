@@ -53,6 +53,10 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  resources :posts
+  resources :posts do
+    member do
+      get 'buy'
+    end
+  end
   root "posts#index"
 end

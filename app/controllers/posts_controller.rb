@@ -3,6 +3,23 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def ipnnotification
+    #if we receive a hook notification
+    #check if completed
+    #then verify the token with paypal
+    #if valid, we mark the purchase as successfully
+    #and we flash the user and redirect the user's session
+  end
+
+  def buy
+    @post = Post.find(params[:id])
+    #initiate payment for that order
+    #if successful, send user to payment page
+    #send user to index page
+    #flash the details of the payment, and say the payment will be confirmed in a few moments
+
+  end
+
   def new
     @post = Post.new
   end

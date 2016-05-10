@@ -9,3 +9,8 @@
         =link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post)
         %p.caption
           =post.caption
+        .text-center
+          = button_to [:buy, post], { method: 'get', class: 'btn btn-success' } do
+            Buy It
+
+          %br
