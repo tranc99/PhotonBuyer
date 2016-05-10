@@ -13,8 +13,10 @@ class PostsController < ApplicationController
 
   def buy
     @post = Post.find(params[:id])
+    @api = PayPal::SDK::AdaptivePayments.new
     #initiate payment for that order
     #if successful, send user to payment page
+    redirect_to 'http://hackishword.com'
     #send user to index page
     #flash the details of the payment, and say the payment will be confirmed in a few moments
 
