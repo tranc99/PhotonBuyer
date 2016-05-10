@@ -18,7 +18,10 @@ gem 'paperclip', '4.2'
 # Use SimpleForm for forms
 gem 'simple_form', '~> 3.1.0'
 # Use Bootstrap Sass for CSS
-gem 'bootstrap-sass', '~> 3.3.5' 
+gem 'bootstrap-sass', '~> 3.3.5'
+
+# Paypal for payments
+gem 'paypal-sdk-adaptivepayments'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby

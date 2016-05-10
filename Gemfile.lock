@@ -69,6 +69,11 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    paypal-sdk-adaptivepayments (1.117.1)
+      paypal-sdk-core (~> 0.3.0)
+    paypal-sdk-core (0.3.4)
+      multi_json (~> 1.0)
+      xml-simple
     polyglot (0.3.5)
     rack (1.5.5)
     rack-test (0.6.3)
@@ -126,6 +131,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.0)
       execjs (>= 0.3.0, < 3)
+    xml-simple (1.1.5)
 
 PLATFORMS
   ruby
@@ -137,6 +143,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   paperclip (= 4.2)
+  paypal-sdk-adaptivepayments
   rails (= 4.1.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
