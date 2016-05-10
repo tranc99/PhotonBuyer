@@ -10,7 +10,5 @@
         %p.caption
           =post.caption
         .text-center
-          = button_to [:buy, post], { method: 'get', class: 'btn btn-success' } do
-            Buy It
-
+          = link_to "Buy It", '/buyit',  { class: 'btn btn-success' }
           %br

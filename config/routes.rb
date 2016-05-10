@@ -57,6 +57,11 @@ Rails.application.routes.draw do
     member do
       get 'buy'
     end
+
+    collection do
+      get 'ipnnotification'
+    end
   end
+  get 'buyit' => 'posts#buyit'
   root "posts#index"
 end

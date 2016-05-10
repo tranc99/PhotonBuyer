@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   def index
+    puts "$$$$$$nagas and orcs"
     @posts = Post.all
   end
 
@@ -9,14 +10,49 @@ class PostsController < ApplicationController
     #then verify the token with paypal
     #if valid, we mark the purchase as successfully
     #and we flash the user and redirect the user's session
+    puts "$$$$$$$$$$$$$$ Received a notification"
+    puts params
+    redirect_to "/posts/2"
   end
 
-  def buy
-    @post = Post.find(params[:id])
+  def buyit
+    #@post = Post.find(params[:id])
     @api = PayPal::SDK::AdaptivePayments.new
     #initiate payment for that order
+
+    @pay = @api.build_pay({
+      :actionType => "PAY",
+      :cancelUrl => "http://localhost:3000/posts/1",
+      :currencyCode => "USD",
+      :feesPayer => "SENDER",
+      :ipnNotificationUrl => "http://localhost:3000/posts/ipnnotification",
+      :receiverList => {
+        :receiver => [{
+          :amount => 1.0,
+          :email => "tmutunhire-facilitator@gmail.com" }] },
+      :returnUrl => "http://localhost:3000/posts" })
+
+    # Make API call & get response
+    @response = @api.pay(@pay)
+    puts "####$$$$$$$$$$Response:"
+    puts @response
+
+    # Access response
+    if @response.success? && @response.payment_exec_status != "ERROR"
+      puts "PAYKEY"
+      puts @response.payKey
+      @response.payKey
+      @api.payment_url(@response)  # Url to complete payment
+      puts "should redirect to:"
+      puts @api.payment_url(@response)
+      redirect_to @api.payment_url(@response)
+    else
+      @response.error[0].message
+      redirect_to 'http://hackishword.com'
+    end
+
     #if successful, send user to payment page
-    redirect_to 'http://hackishword.com'
+
     #send user to index page
     #flash the details of the payment, and say the payment will be confirmed in a few moments
 
