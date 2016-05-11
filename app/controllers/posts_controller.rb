@@ -10,6 +10,18 @@ class PostsController < ApplicationController
     #then verify the token with paypal
     #if valid, we mark the purchase as successfully
     #and we flash the user and redirect the user's session
+    # https://developer.paypal.com/docs/classic/ipn/integration-guide/IPNSimulator/
+    # http://stackoverflow.com/questions/27081578/paypal-adaptive-payments-rails-app-configuration
+    # https://github.com/paypal/adaptivepayments-sdk-ruby/blob/master/samples/app/controllers/adaptive_payments_samples/adaptive_payments_controller.rb
+    # https://github.com/paypal/adaptivepayments-sdk-ruby
+    # https://github.com/paypal/adaptivepayments-sdk-ruby/blob/master/samples/app/views/adaptive_payments_samples/adaptive_payments/pay.html.haml
+    # https://paypal-sdk-samples.herokuapp.com/adaptive_payments/pay
+    # http://www.thecrowned.org/tutorial-paypal-adaptive-payments-api-embedded
+    # https://github.com/paypal/ipn-code-samples/blob/master/paypal_ipn.php
+    # => http://www.perfectline.co/blog/2010/07/correct-paypal-ipn-handling-with-rails/
+    #
+    #
+    #
     puts "$$$$$$$$$$$$$$ Received a notification"
     puts params
     redirect_to "/posts/2"
