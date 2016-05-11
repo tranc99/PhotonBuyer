@@ -59,7 +59,7 @@ Rails.application.routes.draw do
     end
 
     collection do
-      get 'ipnnotification'
+      post 'ipnnotification'
     end
   end
   get 'buyit' => 'posts#buyit'

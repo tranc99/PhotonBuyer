@@ -5,6 +5,8 @@ class PostsController < ApplicationController
   end
 
   def ipnnotification
+
+    render json: Post.first
     #if we receive a hook notification
     #check if completed
     #then verify the token with paypal
@@ -22,9 +24,9 @@ class PostsController < ApplicationController
     #
     #
     #
-    puts "$$$$$$$$$$$$$$ Received a notification"
-    puts params
-    redirect_to "/posts/2"
+    #puts "$$$$$$$$$$$$$$ Received a notification"
+    #puts params
+    #redirect_to "/posts/2"
   end
 
   def buyit
@@ -34,9 +36,12 @@ class PostsController < ApplicationController
 
     @pay = @api.build_pay({
       :actionType => "PAY",
-      :cancelUrl => "http://localhost:3000/posts/1",
+      #:cancelUrl => "http://localhost:3000/posts/1",
+      :cancelUrl => "https://young-depths-76182.herokuapp.com/posts/1",
+      #https://young-depths-76182.herokuapp.com
       :currencyCode => "USD",
       :feesPayer => "SENDER",
+      #:ipnNotificationUrl => "http://localhost:3000/posts/ipnnotification",
       :ipnNotificationUrl => "http://localhost:3000/posts/ipnnotification",
       :receiverList => {
         :receiver => [{
