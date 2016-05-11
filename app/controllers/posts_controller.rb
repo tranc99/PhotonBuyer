@@ -42,12 +42,12 @@ class PostsController < ApplicationController
       :currencyCode => "USD",
       :feesPayer => "SENDER",
       #:ipnNotificationUrl => "http://localhost:3000/posts/ipnnotification",
-      :ipnNotificationUrl => "http://localhost:3000/posts/ipnnotification",
+      :ipnNotificationUrl => "https://young-depths-76182.herokuapp.com/posts/ipnnotification",
       :receiverList => {
         :receiver => [{
           :amount => 1.0,
           :email => "tmutunhire-facilitator@gmail.com" }] },
-      :returnUrl => "http://localhost:3000/posts" })
+      :returnUrl => "https://young-depths-76182.herokuapp.com/posts" })
 
     # Make API call & get response
     @response = @api.pay(@pay)
