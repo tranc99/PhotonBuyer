@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+
+  include PayPal::SDK::AdaptivePayments
+
   def index
     puts "$$$$$$nagas and orcs"
     @posts = Post.all
@@ -8,9 +11,10 @@ class PostsController < ApplicationController
     puts "$$$$$$$$IPN Notification, params:"
     puts params
 
-    callback = AdaptivePay::Callback.new params
+    #callback = AdaptivePay::Callback.new params
+    # if callback.completed?
 
-    if callback.completed?
+    if PayPal::SDK::Core::API::IPN.valid?(request.raw_post)
       puts "$$$$$$$$$$$$$ VERIFICATION COMPLETION"
       first_post = Post.first
       first_post.caption = "VERIFICATION COMPLETION RECORDED"
