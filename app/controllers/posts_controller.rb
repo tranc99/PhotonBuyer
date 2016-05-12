@@ -5,7 +5,24 @@ class PostsController < ApplicationController
   end
 
   def ipnnotification
+    puts "$$$$$$$$IPN Notification, params:"
+    puts params
 
+    callback = AdaptivePay::Callback.new params
+
+    if callback.completed?
+      puts "$$$$$$$$$$$$$ VERIFICATION COMPLETION"
+      first_post = Post.first
+      first_post.caption = "VERIFICATION COMPLETION RECORDED"
+      first_post.save
+
+      # payment has been processed, now mark order as paid etc
+    else
+      first_post = Post.first
+      first_post.caption = "POST VERIFICATION FAILURE RECORDED"
+      first_post.save
+      # payment failed
+    end
     render json: Post.first
     #if we receive a hook notification
     #check if completed
